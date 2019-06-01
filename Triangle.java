@@ -31,10 +31,7 @@ private double sideC;
     public void setSideC(double sideC) {
         this.sideC = sideC;
     }
-
-   /*public boolean validTri(){
-           return sideA+sideB>sideC&&sideB+sideC>sideA&&sideC+sideA>sideB?true:false;
-   }*/
+   
 void info(){
     System.out.println("Стороны треугольника:");
     System.out.println("a = "+sideA+"\r\nb = "+sideB+"\r\nc = "+sideC);
