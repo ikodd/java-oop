@@ -1,29 +1,9 @@
-import java.util.Scanner;
 public class HomeW2905 {
     public static void main(String[] args){
-        //Cat cat1 = new Cat("Мурзик","кот",5,4.5,"пятнистый",true);
-        /*cat1.name = "Мурзик";
-        cat1.age = 5;
-        cat1.weight = 4.5;
-        cat1.color = "пятнистый";
-        cat1.chaseMouse = true;*/
-     //   Cat cat2 = new Cat("Мурка","кошка",3,5,"серый",true);
-        /*Cat cat2 = new Cat();
-        cat2.name = "Мурка";
-        cat2.age = 3;
-        cat2.weight = 5;
-        cat2.color = "серый";
-        cat2.chaseMouse = true;*/
-
-
-  /*      cat1.print();
-cat1.state();
-cat2.print();
-cat2.state();
-cat2.meow();*/
-
+    
 //Конструктор: инициализация tri1
 Triangle tri1 = new Triangle(5,6,4);
+        
                     tri1.info();
 
         System.out.println("Треугольник со сторонами "
