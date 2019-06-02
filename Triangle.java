@@ -32,7 +32,7 @@ private double sideC;
         this.sideC = sideC;
     }
    
-void info(){
+public void info(){
     System.out.println("Стороны треугольника:");
     System.out.println("a = "+sideA+"\r\nb = "+sideB+"\r\nc = "+sideC);
 }
