@@ -1,12 +1,12 @@
 public class Cat {
-    String name;
-    String sex;
-    String breed;
-    String fur;
-    int age;
-    double weight;
-    String color;
-    boolean chaseMouse;
+    private String name;
+    private String sex;
+    private String breed;
+    private String fur;
+    private int age;
+    private double weight;
+    private String color;
+    private boolean chaseMouse;
     Cat(String name,String sex,String breed, String fur, int age, double weight,String color, boolean chaseMouse){
         this.name = name;
         this.sex = sex;
@@ -22,7 +22,7 @@ public class Cat {
          System.out.println("Мяу!");
      }
      public void print(){
-         System.out.println("Описание кота:");
+         System.out.println("Описание кота");
          System.out.println("Имя: "+name);
          System.out.println("Пол: "+sex);
          System.out.println("Порода: "+breed);
@@ -30,7 +30,7 @@ public class Cat {
          System.out.println("Возраст: "+age);
          System.out.println("Вес: "+weight);
          System.out.println("Цвет: "+color);
-         System.out.println("Способ"+(sex=="кот"?"ен":"на")+" ловить мышей: "+(chaseMouse?"да":"нет"));
+         System.out.println("Способ"+(sex=="мужской"?"ен":"на")+" ловить мышей: "+(chaseMouse?"да":"нет"));
               }
          public void state(){
          int catSt = (int)(Math.round(Math.random()*10));
