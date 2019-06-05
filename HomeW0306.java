@@ -10,7 +10,7 @@ public class HomeW0306 {
         System.out.println("Периметр треугольника1: P = " + tri1.calcPerim());
         System.out.println("Площадь треугольника1: S = "+tri1.calcArea());
 
-        Rectangle rec1 = new Rectangle(point1,point2,point3);
+        Rectangle rec1 = new Rectangle(point1,point2,point3,point4);
         System.out.println("Периметр прямоугольника1: P = " + rec1.calcPerim());
         System.out.println("Площадь прямоугольника1: S = "+rec1.calcArea());
 

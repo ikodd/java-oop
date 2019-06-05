@@ -5,7 +5,7 @@ public class Rectangle extends Shape{
     private Point pointD;
 
 
-    public Rectangle(Point pointA, Point pointB, Point pointC) {
+    public Rectangle(Point pointA, Point pointB, Point pointC,Point pointD) {
         super();
         this.pointA = pointA;
         this.pointB = pointB;
@@ -74,7 +74,7 @@ public class Rectangle extends Shape{
     public double calcArea(Rectangle rectangle){
 //Площадь прямоугольника: S = d1*d2
         double d1 = Math.sqrt(Math.pow((pointA.getX()-pointB.getX()),2)+
-                Math.pow((pointA.getY()-pointB.getY()),2));
+                Math.pow((pointA.getY()- pointB.getY()),2));
         double d2 = Math.sqrt(Math.pow((pointB.getX()-pointC.getX()),2)+
                 Math.pow((pointB.getY()-pointC.getY()),2));
         return d1*d2;
