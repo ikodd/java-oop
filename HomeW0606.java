@@ -35,11 +35,7 @@ public class HomeW0606  {
         gr1.resultByIndex(9);
         gr1.toString();
         gr1.addStudent((Student) stud12);
-        /*System.out.println(stud1.toString());
-        System.out.println(h1.toString());
-        System.out.println(stud1.getHeight());
-        gr2.delStudent((Student)stud2);
-        System.out.println(gr2.toString());*/
+       
 
     }
 }
