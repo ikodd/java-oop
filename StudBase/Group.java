@@ -45,11 +45,6 @@ public class Group {
 
 }
 
-/*public String toString(){
-        for(st:this.students){
-
-        }
-}*/
 
 public void addStudent (Student st) throws FullArrException{
     try{
@@ -63,61 +58,70 @@ public void addStudent (Student st) throws FullArrException{
 
 
 }
-//Метод: удаление записи
+//Метод: удаление записи в массиве students объекта класса Group
 public void delStudent(Student st){
         //Если студент не найден
     if(searchStudent(st)==-1){
         System.out.println("Такой записи не обнаружено");
     return;
-    }else{
+    }
         //Иначе ячейка перезаписывается значением null
         this.students[searchStudent(st)] = null;
         return;
-    }
+
 }
 //Метод: поиск студента среди записей группы
 public int searchStudent(Student st){
         for(int i = 0;i<this.students.length;i++){
+            if(this.students[i]==null)continue;
             //При совпадении искомого значения с записью возвращается номер записи (индекс)
-            if(this.students[i]==st){
-
-                return i;
-            }else if(i>=this.students.length-1&&!(this.students[i]==st)){
-                return -1;//Если студент не найден
-            }
+            if(this.students[i].equals(st))return i;
 
         }
-    return 0;
-}
+    return -1;//Если студент не найден
+    }
 
 public int searchByLName(String lastName){
         for(int i = 0;i < this.students.length;i++){
             //При совпадении фамилии, возвращается номер записи (индекс)
-            if(this.students[i].getlName().equals(lastName)){
-                return i;
-            }else if(i >= this.students.length -1 && !(this.students[i].getlName().equals(lastName))){
-                return -1;//Если фамилия студента не найдена
-            }
-        }
-        return 0;
+            if(this.students[i]==null)continue;//Если в текущей строке нет записи, перейти к следующей итерации
+            if(this.students[i].getlName().equals(lastName))return i;//Если фамилия найдена, возвращается индекс
+                  }
+    return -1;//Если фамилия студента не найдена
 }
+
 //Метод: поиск и вывод записи по индексу в массиве
 public void resultByIndex(int index){
-    System.out.println(this.students[index]);
+    System.out.println(this.students[index]!=null?this.students[index]:"Нет такой записи");
 }
 
 //Метод: проверка, заполнен ли массив записей группы студентов
 public int checkList(){
         for(int i = 0;i<this.students.length;i++){
             //Если найдена пустая ячейка, возвращается её индекс
-            if(this.students[i]==null){
-                return i;
-                //Если массив полностью заполнен возвращается -1
-            }else if(i>=this.students.length-1&&!(this.students[i]==null)){
-                return -1;
-            }
+            if(this.students[i]==null)return i;
         }
-    return 0;
+    //Если массив полностью заполнен возвращается -1
+    return -1;
 }
+
+//Метод: сортировка записей массива класса Group
+   public void sort(){
+for(int i = 0;i < this.students.length;i++){
+    if(this.students[i]==null)continue;
+    Student objMin = this.students[i];
+    int minIndex = i;
+    for(int j = i;j<this.students.length - 1;j++){
+         if(objMin.getlName().compareTo(this.students[j].getlName())>0){
+          objMin = this.students[j];
+          minIndex = j;
+      }
+    }
+    if(minIndex != i){
+        this.students[minIndex] = this.students[i];
+        this.students[i] = objMin;
+    }
+}
+   }
 
 }
