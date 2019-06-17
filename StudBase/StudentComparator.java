@@ -1,5 +1,4 @@
 package joop;
-import intrfc.NullComparator;
 import java.util.Comparator;
 
 public class StudentComparator implements Comparator {
