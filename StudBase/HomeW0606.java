@@ -1,5 +1,7 @@
 package joop;
 
+import java.util.Arrays;
+
 public class HomeW0606  {
     public static void main(String[] args) throws FullArrException{
         Human h1 = new Human();
@@ -45,8 +47,21 @@ public class HomeW0606  {
         gr1.resultByIndex(9);
         System.out.println("Отсортированный массив группы " + "\""+ gr1.getGrName() + "\"");
         System.out.println(gr1.toString());
+        /*
+        Сортировка массива группы студентов по параметру:
+         1 – по фамилии, 2 – по возрасту,
+         3 – по номеру зачетки,
+         4 – по росту, 5 – по весу;
+         reverse = true – в нисходящем порядке
+          */
+        gr1.sortByPar(true,1);
+        System.out.println("Отсортированный массив группы " + "\""+ gr1.getGrName() + "\"");
+        System.out.println(gr1.toString());
         //Генерация ошибки FullArrException
         gr1.addStudent((Student) stud12);
+        //Тестирование сервиса Военком
+        System.out.println(Arrays.toString(gr1.getRecruits()));
+
 
 
     }

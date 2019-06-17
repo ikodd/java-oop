@@ -2,7 +2,7 @@ package joop;
 
 import java.util.Arrays;
 
-public class Group {
+public class Group implements Commissar {
     private String grName;
     private Student []students = new Student[10];
 
@@ -79,7 +79,7 @@ public int searchStudent(Student st){
 
         }
     return -1;//Если студент не найден
-    }
+}
 
 public int searchByLName(String lastName){
         for(int i = 0;i < this.students.length;i++){
@@ -123,5 +123,41 @@ for(int i = 0;i < this.students.length;i++){
     }
 }
    }
+//Метод: сортировка по параметру
+    //Если reverse = false – восходящий
+   public void sortByPar(boolean reverse, int sortPar){
+        Arrays.sort(this.students,new StudentComparator(reverse,sortPar));
+
+   }
+
+   //Метод для интерфейса Commissar
+  public Student[] getRecruits() throws NullPointerException {
+      int num = 0;//Резервирование счетчика для для возвращаемого массива
+
+      //Подсчет количества студентов, отвечающих требованиям военкома
+        for(Student st : getStudents()){
+         if(st != null && st.getAge() >= 18 && st.getSex().equals("мужской")){
+             num+= 1;//При совпадении условий, обновление счетчика
+         }
+         }
+        //Если таких нет, возвращается null
+      if(num == 0) return null;
+
+      //Иначе создается массив с количеством строк num
+      Student[] arrRecruits = new Student[num];
+      int i = 0;//Резервирование счетчика итераций при заполнении массива
+
+      //Перебор строк массива студентов группы
+         for(Student st : getStudents()) {
+              if (st != null && st.getAge() >= 18 && st.getSex().equals("мужской")) {
+                  //Данные студента, отвечающего требованиям, помещаются в массив
+                  arrRecruits[i] = st;
+                  i+= 1;//Обновление счетчика итераций
+              }
+          }
+         //Возвращение массива данных студентов, отвечающих требованиям военкома
+         return arrRecruits;
+        }
+
 
 }
