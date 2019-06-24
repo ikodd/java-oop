@@ -41,10 +41,7 @@ arrText2 = uniqueStrings(arrText2);
  }catch (IOException e){
      throw e;
  }
-        System.out.println(Arrays.toString(arrText1));
-        System.out.println(Arrays.toString(arrText2));
-        System.out.println("---");
-        System.out.println(Arrays.toString(arrText3));
+        
     }
 
 
