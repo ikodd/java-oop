@@ -35,9 +35,7 @@ if(arrFiles[i].endsWith("." + ext)){
                   }
 
         arrSel = Arrays.copyOf(arrSel,cnt);//Копирование массива с отобранными файлами в массив меньшего размера – ячейки с null в "хвосте" отсекаются
-        System.out.println(Arrays.toString(arrFiles));
-        System.out.println(Arrays.toString(arrSel));
-
+        
         if(!dir2.exists())dir2.mkdir();
         dirCopy(dir1,dir2,arrSel);
         arrFiles = null;
