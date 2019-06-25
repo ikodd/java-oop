@@ -1,6 +1,6 @@
 /*
- *   На вход подается два текстовых файла.
- *    В третий записываются одинаковые для двух первых файлов слова.
+ *   Имеется два текстовых файла.
+ *   Одинаковые для этих файлов слова записываются в третий.
  *  Слова разделены одним пробелом
  */
 package inout;
@@ -8,7 +8,7 @@ package inout;
 import java.io.*;
 import java.util.Arrays;
 
-public class HomeW1206_2 {
+public class HomeW12062 {
     public static void main(String[] args) throws IOException {
 File f1 = new File(System.getProperty("user.dir") + "/src/inout/" + "text1.txt");
 File f2 = new File(System.getProperty("user.dir") + "/src/inout/" + "text2.txt");
