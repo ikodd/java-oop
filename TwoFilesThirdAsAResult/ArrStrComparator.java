@@ -8,7 +8,7 @@ public class ArrStrComparator {
     /*
      *     Метод: поиск одинаковых слов
      *     в двух массивах и запись их
-     *     в третий массив (на выходе)
+     *     в третий (на выходе)
      */
     public static String[] equalWords(String[] arr1, String[] arr2){
         String[] arr3 = new String[arr1.length];
