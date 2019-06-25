@@ -14,7 +14,7 @@ public class BufferReader {
             String[] arrText = new String[0];//Массив для слов
             String line = null;
 
-            // Построчное чтение файла, слова из строки заносятся в words[]
+            // Построчное чтение файла; слова из строки заносятся в words[]
             while((line = br.readLine()) != null){
                 String[] words = line.split(" "); // Отдельные слова строки определяются по наличию разделителя (одиночный пробел)
                 int lastCell = arrText.length;
