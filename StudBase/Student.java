@@ -1,6 +1,10 @@
 package joop;
 
-public class Student extends Human {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Student extends Human implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int studyYear;//Год обучения
     private int studId;//Номер зачетки
 
@@ -41,5 +45,19 @@ public class Student extends Human {
                 ", age=" + age +
                 ", sex='" + sex + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return getStudyYear() == student.getStudyYear() &&
+                getStudId() == student.getStudId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getStudyYear(), getStudId());
     }
 }

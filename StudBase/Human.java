@@ -1,6 +1,10 @@
 package joop;
 
-public class Human {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Human implements Serializable {
+    private static final long serialVersionUID = 1L;
     protected String lName;
     protected String fName;
     protected String sName;
@@ -101,4 +105,22 @@ public class Human {
                 "\r\nВозраст: " + this.getAge();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Human)) return false;
+        Human human = (Human) o;
+        return Double.compare(human.getHeight(), getHeight()) == 0 &&
+                Double.compare(human.getWeight(), getWeight()) == 0 &&
+                getAge() == human.getAge() &&
+                getlName().equals(human.getlName()) &&
+                getfName().equals(human.getfName()) &&
+                getsName().equals(human.getsName()) &&
+                getSex().equals(human.getSex());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getlName(), getfName(), getsName(), getHeight(), getWeight(), getAge(), getSex());
+    }
 }
