@@ -71,16 +71,4 @@ public void addToList(Class className){
         return false;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BlackList)) return false;
-        BlackList blackList1 = (BlackList) o;
-        return Arrays.equals(getBlackList(), blackList1.getBlackList());
     }
-
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(getBlackList());
-    }
-}
