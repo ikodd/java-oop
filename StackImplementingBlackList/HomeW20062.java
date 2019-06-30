@@ -1,4 +1,7 @@
 package joop.stack;
+/*    Тестирование стека
+*    с "черным списком" классов
+*/
 
 import java.util.Arrays;
 
@@ -20,11 +23,11 @@ public class HomeW20062 {
         st.printStack();
         st.push(box1);
         st.printStack();
-        st.push(sp2);
+        st.push(sp2); // Класс Sphere внесен в "черный список"
         st.printStack();
         st.push(box2);
         st.printStack();
-        st.push(sp1);
+        st.push(sp1); // Класс Sphere внесен в "черный список"
         st.printStack();
         System.out.println("pop -> " + st.pop());
         st.printStack();
