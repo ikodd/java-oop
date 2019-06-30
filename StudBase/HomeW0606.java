@@ -1,4 +1,7 @@
 package joop;
+/*
+*   Сериализация-десериализация объектов
+*/
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -8,8 +11,6 @@ import static joop.Group.readGrDataByFName;
 
 public class HomeW0606  {
     public static void main(String[] args) throws FullArrException, IOException, ClassNotFoundException,NullPointerException {
-        StringBuilder sb = new StringBuilder();
-        Human h1 = new Human();
         Human stud1 = new Student("Иванов", "Иван", "Иванович",176, 80,21,"мужской",1,644654);
         Human stud2 = new Student("Петрова", "Мария", "Ивановна",172,65,20,"женский",1,545455454);
         Human stud3 = new Student("Тропиканов", "Авдей", "Михайлович",190,70,27,"мужской",2,3555545);
@@ -22,64 +23,30 @@ public class HomeW0606  {
         Human stud10 = new Student("Стрекоза", "Валерия", "Александровна",175,73,20,"женский",1,545455464);
         Human stud11 = new Student("Мысливцев", "Кондрат", "Филатович",169,76,22,"мужской",2,542455456);
         Human stud12 = new Student("Нарядная", "Алла", "Борисовна",170,69,21,"женский",1,545488454);
-        h1 = stud1;
-        System.out.println(h1.toString());
-        System.out.println(stud1.humInfo());
         Group gr1 = new Group("Английский язык","grEng");
         Group gr2 = new Group("Французский язык","grFr");
-        System.out.println(gr1.toString());
         gr1.addStudent((Student)stud1);
         gr2.addStudent(null);
         gr1.addStudent((Student)stud3);
         gr1.addStudent((Student) stud4);
         gr1.addStudent((Student) stud5);
         gr1.addStudent((Student) stud6);
-        //Поиск по фамилии студента
-        String soughtStud = "Алмазова";
-        String str = gr1.searchByLName(soughtStud) == -1?"Такого имени среди записей группы " +
-                gr1.getGrName() +
-                " нет":gr1.searchByLName(soughtStud) +
-                ": индекс записи студента " + soughtStud;
-        System.out.println(str);
         gr1.addStudent((Student) stud7);
         gr1.addStudent((Student) stud8);
         gr1.addStudent((Student) stud9);
         gr1.addStudent((Student) stud10);
         gr1.addStudent((Student) stud11);
-        gr1.resultByIndex(9);
-        System.out.println(gr1.toString());
-        gr1.sort();
-        gr1.resultByIndex(9);
-        System.out.println("Отсортированный массив группы " + "\""+ gr1.getGrName() + "\"");
-        System.out.println(gr1.toString());
-        /*
-        Сортировка массива группы студентов по параметру:
-         1 – по фамилии, 2 – по возрасту,
-         3 – по номеру зачетки,
-         4 – по росту, 5 – по весу;
-         reverse = true – в нисходящем порядке
-          */
-        gr1.sortByPar(false,1);
-        System.out.println("Отсортированный по фамилии массив группы " + "\""+ gr1.getGrName() + "\"");
-        System.out.println(gr1.toString());
-        //Генерация ошибки FullArrException
-        gr1.addStudent((Student) stud12);
-        //Тестирование сервиса Военком
-        System.out.println("Военком");
-        System.out.println(Arrays.toString(gr1.getRecruits()));
+        
 gr1.storeGrData();
 Group grTemp = new Group();
            grTemp = readGrDataByFName("grEng");
-           gr1 = grTemp;
-        grTemp.printGroup();
-        grTemp = null;
-        gr1.printGroup();
+           grTemp.printGroup();
         //Удаление из базы группы по номер студ. зачетки
         gr1.delStudById(545455454);
         gr1.printGroup();
         gr1.addStudent((Student)stud1);
         gr1.storeGrData();
-        grTemp = readGrDataByFName(gr1.getGrFName());
+        grTemp = readGrDataByFName("grEng");
         grTemp.printGroup();
 
     }
