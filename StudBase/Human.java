@@ -1,7 +1,6 @@
 package joop;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Human implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -121,6 +120,20 @@ public class Human implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getlName(), getfName(), getsName(), getHeight(), getWeight(), getAge(), getSex());
+        int result  = 1;
+        int prime = 31;
+        long temp = 1;
+        result = (int)(prime * result + getlName().hashCode());
+        result = (int)(prime * result + getfName().hashCode());
+        result = (int)(prime * result + getsName().hashCode());
+        temp = Double.doubleToLongBits(getHeight());
+        result = (int)(prime * result + temp^(temp>>>32));
+        temp = Double.doubleToLongBits(getWeight());
+        result = (int)(prime * result + temp^(temp>>>32));
+        temp = getAge();
+        result = (int)(prime * result + temp^(temp>>>32));
+        result = (int)(prime * result + getSex().hashCode());
+
+        return result;
     }
 }

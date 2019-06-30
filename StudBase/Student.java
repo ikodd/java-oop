@@ -58,6 +58,12 @@ public class Student extends Human implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getStudyYear(), getStudId());
+        int result = 1;
+        int prime = 31;
+        long temp = getStudyYear();
+        result = (int) (prime * result + temp^(temp>>>32));
+        temp = getStudId();
+        result = (int) (prime * result + temp^(temp>>>32));
+        return result;
     }
 }

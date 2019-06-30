@@ -1,9 +1,8 @@
 package joop;
 
-import sun.plugin.viewer.context.IExplorerAppletContext;
-
 import java.io.*;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Group implements Commissar, Serializable {
     private static final long serialVersionUID = 1L;
@@ -60,8 +59,24 @@ public class Group implements Commissar, Serializable {
 
 }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Group)) return false;
+        Group group = (Group) o;
+        return getGrName().equals(group.getGrName()) &&
+                getGrFName().equals(group.getGrFName()) &&
+                Arrays.equals(getStudents(), group.getStudents());
+    }
 
-public boolean addStudent (Student st) throws FullArrException, IOException{
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(getGrName(), getGrFName());
+        result = 31 * result + Arrays.hashCode(getStudents());
+        return result;
+    }
+
+    public boolean addStudent (Student st) throws FullArrException, IOException{
     try{
         if(checkList()==-1){
             throw new FullArrException("Группа заполнена");
@@ -165,26 +180,20 @@ public void sortByPar(boolean reverse, int sortPar){
 
    //Метод для интерфейса Commissar
   public Student[] getRecruits() throws NullPointerException {
-      int num = 0;//Резервирование счетчика для для возвращаемого массива
-
+      int num = 0;
          for(Student st : getStudents()){
          if(st != null && st.getAge() >= 18 && st.getSex().equals("мужской")){
              num+= 1;//При совпадении условий, обновление счетчика
          }
          }
-        //Если таких нет, возвращается null
-      if(num == 0) return null;
+         if(num == 0) return null;
+      Student[] arrRecruits = new Student[num];//Иначе создается массив с количеством строк num
+      int i = 0;//Индекс для массива arrRecruits
 
-      //Иначе создается массив с количеством строк num
-      Student[] arrRecruits = new Student[num];
-      int i = 0;//Резервирование счетчика итераций при заполнении массива
-
-      //Перебор строк массива студентов группы
-         for(Student st : getStudents()) {
+      for(Student st : getStudents()) {
               if (st != null && st.getAge() >= 18 && st.getSex().equals("мужской")) {
-                  //Данные студента, отвечающего требованиям, помещаются в массив
                   arrRecruits[i] = st;
-                  i+= 1;//Обновление счетчика итераций
+                  i+= 1;
               }
           }
          //Возвращение массива данных студентов, отвечающих требованиям военкома
@@ -210,8 +219,7 @@ public boolean storeGrData() throws IOException {
 *    На входе имя файла
 */
 public static Group readGrDataByFName(String fName) throws IOException,ClassNotFoundException{
-            Group gr = new Group();
-            gr = null;
+            Group gr;
             File f = new File(System.getProperty("user.dir") + "/src/joop/" + fName);
             try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream((f)))){
                gr = (Group)ois.readObject();
@@ -227,10 +235,14 @@ public static Group readGrDataByFName(String fName) throws IOException,ClassNotF
 *  */
         public boolean delStudById(int id) throws IOException{
     Student st = searchStByID(id);
-    if(st != null){
-        delStudent(st);
-        storeGrData();
-        return true;
+    try{
+        if(st != null){
+            delStudent(st);
+            storeGrData();
+            return true;
+        }
+    }catch(IOException e){
+        e.printStackTrace();
     }
     return false;
         }

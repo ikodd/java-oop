@@ -1,9 +1,14 @@
 package joop;
 
+import java.io.IOException;
 import java.util.Arrays;
 
+import static joop.Group.readGrDataByFName;
+
+
 public class HomeW0606  {
-    public static void main(String[] args) throws FullArrException{
+    public static void main(String[] args) throws FullArrException, IOException, ClassNotFoundException,NullPointerException {
+        StringBuilder sb = new StringBuilder();
         Human h1 = new Human();
         Human stud1 = new Student("Иванов", "Иван", "Иванович",176, 80,21,"мужской",1,644654);
         Human stud2 = new Student("Петрова", "Мария", "Ивановна",172,65,20,"женский",1,545455454);
@@ -20,12 +25,12 @@ public class HomeW0606  {
         h1 = stud1;
         System.out.println(h1.toString());
         System.out.println(stud1.humInfo());
-        Group gr1 = new Group("Английский язык");
-        Group gr2 = new Group("Французский язык");
+        Group gr1 = new Group("Английский язык","grEng");
+        Group gr2 = new Group("Французский язык","grFr");
         System.out.println(gr1.toString());
-        gr1.addStudent((Student) stud1);
-        gr2.addStudent((Student)stud2);
-        gr1.addStudent((Student) stud3);
+        gr1.addStudent((Student)stud1);
+        gr2.addStudent(null);
+        gr1.addStudent((Student)stud3);
         gr1.addStudent((Student) stud4);
         gr1.addStudent((Student) stud5);
         gr1.addStudent((Student) stud6);
@@ -54,15 +59,28 @@ public class HomeW0606  {
          4 – по росту, 5 – по весу;
          reverse = true – в нисходящем порядке
           */
-        gr1.sortByPar(true,1);
-        System.out.println("Отсортированный массив группы " + "\""+ gr1.getGrName() + "\"");
+        gr1.sortByPar(false,1);
+        System.out.println("Отсортированный по фамилии массив группы " + "\""+ gr1.getGrName() + "\"");
         System.out.println(gr1.toString());
         //Генерация ошибки FullArrException
         gr1.addStudent((Student) stud12);
         //Тестирование сервиса Военком
+        System.out.println("Военком");
         System.out.println(Arrays.toString(gr1.getRecruits()));
-
-
+gr1.storeGrData();
+Group grTemp = new Group();
+           grTemp = readGrDataByFName("grEng");
+           gr1 = grTemp;
+        grTemp.printGroup();
+        grTemp = null;
+        gr1.printGroup();
+        //Удаление из базы группы по номер студ. зачетки
+        gr1.delStudById(545455454);
+        gr1.printGroup();
+        gr1.addStudent((Student)stud1);
+        gr1.storeGrData();
+        grTemp = readGrDataByFName(gr1.getGrFName());
+        grTemp.printGroup();
 
     }
 }
