@@ -3,7 +3,7 @@ package joop.collections;
 import java.util.ArrayList;
 
 public class TenElementsAL<T> {
-    private ArrayList<T> al = new ArrayList<>();
+    private List<T> al = new ArrayList<>();
 
     public TenElementsAL(ArrayList<T> al) {
         super();
