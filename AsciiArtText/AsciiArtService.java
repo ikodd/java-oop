@@ -16,7 +16,7 @@ public class AsciiArtService {
             StringBuilder sb = new StringBuilder();
             int asciiFHeight = 6; // Высота ASCII Art буквы
             int counter = 0;
-            HashMap hm = new HashMap();
+            Map<String,String> hm = new HashMap<>();
             while((line = br.readLine()) != null){
                 counter+= 1;
                 sb.append(line);
@@ -37,7 +37,8 @@ public class AsciiArtService {
 
     /*
     * Метод: "построчная" запись ASCII Art букв в
-    * HashMap с ключами 0::0, ...0::6 ... str.length::6
+    * 
+    с ключами 0::0, ...0::6 ... str.length::6
     */
     public static Map<String,String> hashMLineByLine(String []letter, int i){
      Map<String,String> hm = new HashMap<>();
