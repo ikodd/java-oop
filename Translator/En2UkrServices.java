@@ -16,7 +16,7 @@ public class En2UkrServices implements Serializable {
        public static boolean txt2HmConv(File fDic, File fHm){
         try(BufferedReader br = new BufferedReader(new FileReader(fDic)); ObjectOutput oos = new ObjectOutputStream(new FileOutputStream(fHm))){
             String line = null;
-            HashMap hm = new LinkedHashMap();
+            HashMap<String, String> hm = new LinkedHashMap<>();
             while((line = br.readLine()) != null){
                 String []arrWordline = line.split("\t"); // Разделение слов словаря на ключ-значение по \t (табулятор)
                 if(arrWordline.length != 2)continue;
