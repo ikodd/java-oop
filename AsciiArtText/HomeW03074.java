@@ -16,6 +16,6 @@ public class HomeW03074 {
         File fAbc = new File(folder + "asciiabc.txt");
         File fHm = new File(folder + "asciiAbcHm");
 AsciiArtGen asciiTxt = new AsciiArtGen(fAbc,fHm);
-        System.out.println(asciiTxt.asciiFPrint("Java OOP"));;
+        System.out.println(asciiTxt.asciiFPrint("Java OOP"));
     }
 }
